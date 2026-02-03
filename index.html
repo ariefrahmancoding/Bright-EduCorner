@@ -5,695 +5,142 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EduCorner - Portal Pendidikan</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="/_sdk/element_sdk.js"></script>
-  <script src="/_sdk/data_sdk.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <style>
-    body {
-      box-sizing: border-box;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-    
-    @keyframes glow {
-      0%, 100% { filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.6)); }
-      50% { filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.9)); }
-    }
-    
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(-20px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
     .animate-float { animation: float 3s ease-in-out infinite; }
-    .animate-glow { animation: glow 2s ease-in-out infinite; }
     .animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; }
-    .animate-slideIn { animation: slideIn 0.6s ease-out forwards; }
-    
-    .delay-100 { animation-delay: 0.1s; }
-    .delay-200 { animation-delay: 0.2s; }
-    .delay-300 { animation-delay: 0.3s; }
-    .delay-400 { animation-delay: 0.4s; }
-    
-    .gradient-bg {
-      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
-    }
-    
-    .card-hover {
-      transition: all 0.3s ease;
-    }
-    
-    .card-hover:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
-    }
-    
-    .btn-primary {
-      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-      transition: all 0.3s ease;
-    }
-    
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
-    }
-    
-    .glass-effect {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-    }
-    
-    .text-gradient {
-      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .scroll-smooth {
-      scroll-behavior: smooth;
-    }
+    .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%); }
+    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2); transition: all 0.3s ease; }
+    .btn-primary { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); transition: all 0.3s ease; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3); }
+    .glass-effect { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+    .text-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   </style>
-  <style>@view-transition { navigation: auto; }</style>
  </head>
  <body class="h-full bg-slate-50 text-slate-800 scroll-smooth overflow-auto">
-  <div id="app-wrapper" class="w-full h-full"><!-- Navigation -->
-   <nav class="fixed top-0 left-0 right-0 z-50 glass-effect shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="flex justify-between items-center h-16">
-      <div class="flex items-center gap-3"><!-- Logo Toga Roda Gigi dengan Bintang -->
-       <div class="relative animate-float">
-        <svg width="48" height="48" viewbox="0 0 48 48" fill="none" class="animate-glow"><!-- Roda Gigi --> <path d="M24 8L26 12L30 10L29 14L33 14L30 17L33 20L29 20L30 24L26 22L24 26L22 22L18 24L19 20L15 20L18 17L15 14L19 14L18 10L22 12L24 8Z" fill="#1e3a8a" /> <!-- Toga --> <path d="M14 28L24 24L34 28L24 32L14 28Z" fill="#2563eb" /> <path d="M24 32V38" stroke="#1e3a8a" stroke-width="2" /> <circle cx="24" cy="39" r="2" fill="#1e3a8a" /> <rect x="16" y="28" width="16" height="8" rx="1" fill="#3b82f6" /> <!-- Bintang Bercahaya --> <path d="M38 8L39 11L42 11L40 13L41 16L38 14L35 16L36 13L34 11L37 11L38 8Z" fill="#fbbf24" /> <circle cx="38" cy="12" r="6" fill="none" stroke="#fbbf24" stroke-width="0.5" opacity="0.5" />
-        </svg>
-       </div><span class="text-2xl font-bold text-gradient">EduCorner</span>
+  
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-effect shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl font-bold text-gradient">EduCorner</span>
       </div>
-      <div class="flex items-center gap-8"><a href="#beranda" class="text-slate-600 hover:text-blue-600 transition-colors font-medium">Beranda</a> <a href="#kategori" class="text-slate-600 hover:text-blue-600 transition-colors font-medium">Kategori</a> <a href="#peluang" class="text-slate-600 hover:text-blue-600 transition-colors font-medium">Peluang</a> <a href="#testimoni" class="text-slate-600 hover:text-blue-600 transition-colors font-medium">Testimoni</a> <a href="#kontak" class="text-slate-600 hover:text-blue-600 transition-colors font-medium">Kontak</a>
+      <div class="hidden md:flex gap-8 font-medium text-slate-600">
+        <a href="#beranda" class="hover:text-blue-600">Beranda</a>
+        <a href="#kategori" class="hover:text-blue-600">Kategori</a>
+        <a href="#peluang" class="hover:text-blue-600">Peluang</a>
+        <a href="#kontak" class="hover:text-blue-600">Kontak</a>
       </div>
-     </div>
     </div>
-   </nav><!-- Hero Section -->
-   <section id="beranda" class="gradient-bg min-h-screen flex items-center pt-16 relative overflow-hidden"><!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-10">
-     <svg width="100%" height="100%"><defs>
-       <pattern id="grid" width="40" height="40" patternunits="userSpaceOnUse">
-        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1" />
-       </pattern>
-      </defs> <rect width="100%" height="100%" fill="url(#grid)" />
-     </svg>
+  </nav>
+
+  <section id="beranda" class="gradient-bg min-h-screen flex items-center pt-16 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 py-20 relative z-10 text-white grid lg:grid-cols-2 gap-12 items-center">
+      <div class="animate-fadeInUp">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Ulurkan Tangan,<br>Wujudkan Masa Depan</h1>
+        <p class="text-xl text-blue-100 mb-8">Wadah informasi beasiswa, magang, dan pelatihan terkurasi untuk meningkatkan skill mahasiswa dan lulusan baru.</p>
+        <div class="flex flex-wrap gap-4">
+          <button class="bg-white text-blue-600 px-8 py-4 rounded-full font-bold shadow-lg hover:scale-105 transition-all">Jelajahi Peluang</button>
+          <button id="open-modal" class="border-2 border-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-blue-600 transition-all">Pelajari Lebih Lanjut</button>
+        </div>
+      </div>
+      <div class="hidden lg:block animate-float">
+        <img src="https://illustrations.popsy.co/white/studying.svg" alt="Education Illustration" class="w-full max-w-md mx-auto">
+      </div>
     </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-     <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <div class="text-white animate-fadeInUp"><!-- Ikon Ulurkan Tangan -->
-       <div class="mb-8 flex items-center gap-4">
-        <svg width="80" height="80" viewbox="0 0 80 80" fill="none" class="animate-float"><!-- Tangan Mengulur --> <path d="M20 50C20 50 25 35 35 30C45 25 55 28 60 35C65 42 65 55 60 60C55 65 40 68 30 65C20 62 20 50 20 50Z" fill="rgba(255,255,255,0.9)" /> <path d="M35 30L40 20" stroke="white" stroke-width="3" stroke-linecap="round" /> <path d="M45 28L52 18" stroke="white" stroke-width="3" stroke-linecap="round" /> <path d="M55 32L65 25" stroke="white" stroke-width="3" stroke-linecap="round" /> <!-- Cahaya --> <circle cx="40" cy="15" r="3" fill="#fbbf24" /> <circle cx="55" cy="12" r="2" fill="#fbbf24" /> <circle cx="68" cy="20" r="2" fill="#fbbf24" />
-        </svg>
-        <svg width="60" height="60" viewbox="0 0 60 60" fill="none" class="animate-glow"><!-- Toga Ikon --> <path d="M10 35L30 25L50 35L30 45L10 35Z" fill="white" /> <rect x="15" y="35" width="30" height="12" rx="2" fill="rgba(255,255,255,0.8)" /> <path d="M30 45V55" stroke="white" stroke-width="3" /> <circle cx="30" cy="57" r="3" fill="#fbbf24" />
-        </svg>
-       </div>
-       <h1 id="hero-title" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Ulurkan Tangan,<br>
-        Wujudkan Masa Depan</h1>
-       <p id="hero-subtitle" class="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">Wadah informasi beasiswa, magang, dan pelatihan terkurasi untuk meningkatkan skill mahasiswa dan lulusan baru.</p>
-       <div class="flex flex-wrap gap-4"><button class="bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition-all hover:scale-105 shadow-lg"> Jelajahi Peluang </button> <button class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-blue-600 transition-all"> Pelajari Lebih Lanjut </button>
-       </div>
+  </section>
+
+  <div id="about-modal" class="fixed inset-0 z-[100] hidden overflow-y-auto">
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm"></div>
+    <div class="relative min-h-screen flex items-center justify-center p-4">
+      <div class="relative bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden animate-fadeInUp">
+        <div class="gradient-bg p-6 text-white flex justify-between items-center">
+          <h3 class="text-2xl font-bold">Tentang EduCorner</h3>
+          <button id="close-modal-x" class="text-3xl">&times;</button>
+        </div>
+        <div class="p-8 text-slate-700 leading-relaxed max-h-[60vh] overflow-y-auto">
+          <h4 class="text-xl font-bold text-blue-600 mb-4">Ruang Tumbuh untuk Masa Depan</h4>
+          <p class="mb-6">Selamat datang di <b>EduCorner</b>, sebuah ekosistem pembelajaran digital yang dirancang khusus untuk menjembatani kesenjangan antara ambisi dan pencapaian. Kami percaya bahwa akses terhadap materi edukasi yang berkualitas adalah hak setiap individu.</p>
+          <div class="bg-blue-50 p-4 rounded-xl mb-6 border-l-4 border-blue-600">
+            <h5 class="font-bold text-blue-800">Visi Kami</h5>
+            <p>Menjadi pusat inovasi pembelajaran yang adaptif, di mana setiap pengguna dapat mengeksplorasi potensi diri tanpa batas ruang dan waktu.</p>
+          </div>
+          <h5 class="font-bold mb-3">Apa yang Membuat Kami Berbeda?</h5>
+          <ul class="space-y-2 mb-6">
+            <li>• <b>Kurikulum Relevan:</b> Materi sesuai tantangan dunia nyata.</li>
+            <li>• <b>Interaktivitas:</b> Kuis, forum, dan proyek komunitas.</li>
+            <li>• <b>Aksesibilitas:</b> Ringan dan responsif di HP maupun Laptop.</li>
+          </ul>
+          <p class="italic text-center text-blue-600">"Pendidikan bukan hanya tentang mengisi wadah, tetapi tentang menyalakan api rasa ingin tahu."</p>
+        </div>
+        <div class="p-6 bg-slate-50 text-center border-t">
+          <button id="close-modal-btn" class="btn-primary text-white px-8 py-3 rounded-full font-bold">Siap Memulai Perjalanan</button>
+        </div>
       </div>
-      <div class="hidden lg:block animate-fadeInUp delay-200"><!-- Ilustrasi Hero -->
-       <svg viewbox="0 0 400 400" fill="none" class="w-full max-w-lg mx-auto"><!-- Background Circle --> <circle cx="200" cy="200" r="180" fill="rgba(255,255,255,0.1)" /> <circle cx="200" cy="200" r="150" fill="rgba(255,255,255,0.1)" /> <!-- Students Illustration --> <ellipse cx="200" cy="320" rx="120" ry="20" fill="rgba(0,0,0,0.1)" /> <!-- Person 1 --> <circle cx="140" cy="180" r="30" fill="#fcd34d" /> <rect x="115" y="210" width="50" height="80" rx="10" fill="#3b82f6" /> <!-- Person 2 --> <circle cx="200" cy="160" r="35" fill="#f97316" /> <rect x="170" y="195" width="60" height="90" rx="10" fill="#1e3a8a" /> <!-- Toga on Person 2 --> <path d="M165 150L200 135L235 150L200 165L165 150Z" fill="#1e3a8a" /> <!-- Person 3 --> <circle cx="260" cy="180" r="30" fill="#a78bfa" /> <rect x="235" y="210" width="50" height="80" rx="10" fill="#2563eb" /> <!-- Floating Elements --> <circle cx="80" cy="100" r="15" fill="#fbbf24" class="animate-float" /> <circle cx="320" cy="80" r="10" fill="#60a5fa" class="animate-float delay-100" /> <rect x="300" cy="250" width="30" height="20" rx="3" fill="#34d399" class="animate-float delay-200" /> <!-- Book --> <rect x="70" cy="200" width="40" height="50" rx="3" fill="white" /> <line x1="75" y1="210" x2="105" y2="210" stroke="#3b82f6" stroke-width="2" /> <line x1="75" y1="220" x2="100" y2="220" stroke="#3b82f6" stroke-width="2" /> <line x1="75" y1="230" x2="95" y2="230" stroke="#3b82f6" stroke-width="2" /> <!-- Certificate --> <rect x="290" y="180" width="50" height="40" rx="3" fill="white" /> <circle cx="315" cy="195" r="8" fill="#fbbf24" /> <line x1="300" y1="208" x2="330" y2="208" stroke="#3b82f6" stroke-width="2" />
-       </svg>
-      </div>
-     </div>
-    </div><!-- Wave Bottom -->
-    <div class="absolute bottom-0 left-0 right-0">
-     <svg viewbox="0 0 1440 120" fill="none" preserveaspectratio="none" class="w-full h-20"><path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#f8fafc" />
-     </svg>
     </div>
-   </section><!-- Search & Filter Section -->
-   <section class="py-12 bg-slate-50">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="glass-effect rounded-2xl shadow-xl p-8 -mt-20 relative z-20 border border-slate-100">
-      <h3 class="text-2xl font-bold text-slate-800 mb-6 text-center">🔍 Cari Peluang Impianmu</h3>
-      <div class="grid md:grid-cols-4 gap-4">
-       <div><label class="block text-sm font-medium text-slate-600 mb-2">Kata Kunci</label> <input type="text" placeholder="Cari beasiswa, magang..." class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none">
-       </div>
-       <div><label class="block text-sm font-medium text-slate-600 mb-2">Jenjang Pendidikan</label> <select class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none bg-white"> <option>Semua Jenjang</option> <option>SMA/SMK</option> <option>D3</option> <option>S1</option> <option>S2</option> <option>S3</option> </select>
-       </div>
-       <div><label class="block text-sm font-medium text-slate-600 mb-2">Lokasi</label> <select class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none bg-white"> <option>Semua Lokasi</option> <option>Dalam Negeri</option> <option>Luar Negeri</option> <option>Asia</option> <option>Eropa</option> <option>Amerika</option> </select>
-       </div>
-       <div class="flex items-end"><button class="w-full btn-primary text-white px-6 py-3 rounded-xl font-semibold flex items-center justify-center gap-2">
-         <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8" /> <path d="M21 21l-4.35-4.35" />
-         </svg> Cari </button>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section><!-- Kategori Utama -->
-   <section id="kategori" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="text-center mb-16"><span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Jelajahi</span>
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mt-2">Kategori Utama</h2>
-      <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Temukan berbagai peluang yang sesuai dengan minat dan kebutuhanmu</p>
-     </div>
-     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8"><!-- Beasiswa -->
-      <div class="card-hover bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl border border-blue-200 cursor-pointer group">
-       <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-        <svg width="32" height="32" viewbox="0 0 32 32" fill="none"><path d="M6 18L16 12L26 18L16 24L6 18Z" fill="white" /> <rect x="8" y="18" width="16" height="8" rx="1" fill="rgba(255,255,255,0.8)" /> <path d="M16 24V30" stroke="white" stroke-width="2" /> <circle cx="16" cy="31" r="2" fill="#fbbf24" />
-        </svg>
-       </div>
-       <h3 class="text-xl font-bold text-slate-800 mb-3">Beasiswa</h3>
-       <p class="text-slate-600 text-sm mb-4">Nasional &amp; Internasional untuk semua jenjang pendidikan</p><span class="text-blue-600 font-semibold text-sm flex items-center gap-2"> Lihat Semua 
-        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" />
-        </svg></span>
-      </div><!-- Magang -->
-      <div class="card-hover bg-gradient-to-br from-emerald-50 to-emerald-100 p-8 rounded-2xl border border-emerald-200 cursor-pointer group">
-       <div class="w-16 h-16 bg-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-        <svg width="32" height="32" viewbox="0 0 32 32" fill="none"><rect x="6" y="8" width="20" height="16" rx="2" fill="white" /> <rect x="10" y="12" width="12" height="2" fill="#10b981" /> <rect x="10" y="16" width="8" height="2" fill="#10b981" /> <path d="M14 4V8" stroke="white" stroke-width="2" /> <path d="M18 4V8" stroke="white" stroke-width="2" />
-        </svg>
-       </div>
-       <h3 class="text-xl font-bold text-slate-800 mb-3">Magang</h3>
-       <p class="text-slate-600 text-sm mb-4">Corporate, Startup, BUMN untuk pengalaman kerja nyata</p><span class="text-emerald-600 font-semibold text-sm flex items-center gap-2"> Lihat Semua 
-        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" />
-        </svg></span>
-      </div><!-- Pelatihan -->
-      <div class="card-hover bg-gradient-to-br from-amber-50 to-amber-100 p-8 rounded-2xl border border-amber-200 cursor-pointer group">
-       <div class="w-16 h-16 bg-amber-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-        <svg width="32" height="32" viewbox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="10" fill="white" /> <path d="M16 10V16L20 20" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" /> <circle cx="16" cy="16" r="2" fill="#f59e0b" />
-        </svg>
-       </div>
-       <h3 class="text-xl font-bold text-slate-800 mb-3">Pelatihan/Kursus</h3>
-       <p class="text-slate-600 text-sm mb-4">Hard skill &amp; Soft skill untuk meningkatkan kompetensi</p><span class="text-amber-600 font-semibold text-sm flex items-center gap-2"> Lihat Semua 
-        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" />
-        </svg></span>
-      </div><!-- Info Pendidikan -->
-      <div class="card-hover bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl border border-purple-200 cursor-pointer group">
-       <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-        <svg width="32" height="32" viewbox="0 0 32 32" fill="none"><rect x="8" y="6" width="16" height="20" rx="2" fill="white" /> <rect x="11" y="10" width="10" height="2" fill="#9333ea" /> <rect x="11" y="14" width="7" height="2" fill="#9333ea" /> <rect x="11" y="18" width="9" height="2" fill="#9333ea" /> <circle cx="22" cy="22" r="6" fill="#fbbf24" /> <path d="M22 19V23M20 21H24" stroke="white" stroke-width="2" />
-        </svg>
-       </div>
-       <h3 class="text-xl font-bold text-slate-800 mb-3">Info Pendidikan</h3>
-       <p class="text-slate-600 text-sm mb-4">Seminar, Webinar, Lomba untuk wawasan luas</p><span class="text-purple-600 font-semibold text-sm flex items-center gap-2"> Lihat Semua 
-        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" />
-        </svg></span>
-      </div>
-     </div>
-    </div>
-   </section><!-- Peluang Terbaru -->
-   <section id="peluang" class="py-20 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
-      <div><span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Terbaru</span>
-       <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mt-2">Peluang Terpopuler</h2>
-       <p class="text-slate-600 mt-2">Pilihan Editor - Update setiap hari</p>
-      </div><button class="mt-4 md:mt-0 btn-primary text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2"> Lihat Semua 
-       <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" />
-       </svg></button>
-     </div>
-     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Card 1 -->
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100">
-       <div class="h-3 bg-gradient-to-r from-blue-600 to-blue-400"></div>
-       <div class="p-6">
-        <div class="flex items-center gap-3 mb-4">
-         <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-          <svg width="24" height="24" viewbox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="#2563eb" /> <text x="12" y="16" text-anchor="middle" fill="white" font-size="10" font-weight="bold">
-            LP
-           </text>
-          </svg>
-         </div>
-         <div><span class="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded-full">Beasiswa</span>
-         </div>
-        </div>
-        <h3 class="text-lg font-bold text-slate-800 mb-2">LPDP Scholarship 2025</h3>
-        <p class="text-slate-600 text-sm mb-4">Beasiswa penuh S2 &amp; S3 dalam dan luar negeri dari Kementerian Keuangan RI</p>
-        <div class="flex items-center justify-between">
-         <div class="flex items-center gap-2 text-sm text-slate-500">
-          <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" /> <path d="M16 2v4M8 2v4M3 10h18" />
-          </svg><span>Deadline: 30 Mei 2025</span>
-         </div>
-        </div><button class="w-full mt-4 btn-primary text-white py-3 rounded-xl font-semibold text-sm"> Daftar Sekarang </button>
-       </div>
-      </div><!-- Card 2 -->
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100">
-       <div class="h-3 bg-gradient-to-r from-emerald-600 to-emerald-400"></div>
-       <div class="p-6">
-        <div class="flex items-center gap-3 mb-4">
-         <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
-          <svg width="24" height="24" viewbox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="#10b981" /> <text x="12" y="16" text-anchor="middle" fill="white" font-size="8" font-weight="bold">
-            GOTO
-           </text>
-          </svg>
-         </div>
-         <div><span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">Magang</span>
-         </div>
-        </div>
-        <h3 class="text-lg font-bold text-slate-800 mb-2">GoTo Impact Internship</h3>
-        <p class="text-slate-600 text-sm mb-4">Program magang 6 bulan di berbagai divisi teknologi GoTo Group</p>
-        <div class="flex items-center justify-between">
-         <div class="flex items-center gap-2 text-sm text-slate-500">
-          <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" /> <path d="M16 2v4M8 2v4M3 10h18" />
-          </svg><span>Deadline: 15 April 2025</span>
-         </div>
-        </div><button class="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-semibold text-sm transition-colors"> Daftar Sekarang </button>
-       </div>
-      </div><!-- Card 3 -->
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100">
-       <div class="h-3 bg-gradient-to-r from-amber-500 to-amber-400"></div>
-       <div class="p-6">
-        <div class="flex items-center gap-3 mb-4">
-         <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center">
-          <svg width="24" height="24" viewbox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="#f59e0b" /> <text x="12" y="16" text-anchor="middle" fill="white" font-size="8" font-weight="bold">
-            DBS
-           </text>
-          </svg>
-         </div>
-         <div><span class="text-xs font-semibold text-amber-600 bg-amber-50 px-2 py-1 rounded-full">Pelatihan</span>
-         </div>
-        </div>
-        <h3 class="text-lg font-bold text-slate-800 mb-2">DBS Foundation Bootcamp</h3>
-        <p class="text-slate-600 text-sm mb-4">Bootcamp coding gratis selama 3 bulan dengan sertifikasi internasional</p>
-        <div class="flex items-center justify-between">
-         <div class="flex items-center gap-2 text-sm text-slate-500">
-          <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" /> <path d="M16 2v4M8 2v4M3 10h18" />
-          </svg><span>Deadline: 20 April 2025</span>
-         </div>
-        </div><button class="w-full mt-4 bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-xl font-semibold text-sm transition-colors"> Daftar Sekarang </button>
-       </div>
-      </div><!-- Card 4 -->
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100">
-       <div class="h-3 bg-gradient-to-r from-purple-600 to-purple-400"></div>
-       <div class="p-6">
-        <div class="flex items-center gap-3 mb-4">
-         <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
-          <svg width="24" height="24" viewbox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="#9333ea" /> <text x="12" y="16" text-anchor="middle" fill="white" font-size="7" font-weight="bold">
-            KEM
-           </text>
-          </svg>
-         </div>
-         <div><span class="text-xs font-semibold text-purple-600 bg-purple-50 px-2 py-1 rounded-full">Info</span>
-         </div>
-        </div>
-        <h3 class="text-lg font-bold text-slate-800 mb-2">Kemendikbud Webinar Series</h3>
-        <p class="text-slate-600 text-sm mb-4">Webinar gratis tentang persiapan karir di era digital</p>
-        <div class="flex items-center justify-between">
-         <div class="flex items-center gap-2 text-sm text-slate-500">
-          <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" /> <path d="M16 2v4M8 2v4M3 10h18" />
-          </svg><span>Tanggal: 10 April 2025</span>
-         </div>
-        </div><button class="w-full mt-4 bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-xl font-semibold text-sm transition-colors"> Daftar Sekarang </button>
-       </div>
-      </div><!-- Card 5 -->
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100">
-       <div class="h-3 bg-gradient-to-r from-blue-600 to-blue-400"></div>
-       <div class="p-6">
-        <div class="flex items-center gap-3 mb-4">
-         <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-          <svg width="24" height="24" viewbox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="#2563eb" /> <text x="12" y="16" text-anchor="middle" fill="white" font-size="7" font-weight="bold">
-            CHV
-           </text>
-          </svg>
-         </div>
-         <div><span class="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded-full">Beasiswa</span>
-         </div>
-        </div>
-        <h3 class="text-lg font-bold text-slate-800 mb-2">Chevening Scholarship UK</h3>
-        <p class="text-slate-600 text-sm mb-4">Beasiswa S2 penuh ke Inggris untuk future leaders Indonesia</p>
-        <div class="flex items-center justify-between">
-         <div class="flex items-center gap-2 text-sm text-slate-500">
-          <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" /> <path d="M16 2v4M8 2v4M3 10h18" />
-          </svg><span>Deadline: 5 Nov 2025</span>
-         </div>
-        </div><button class="w-full mt-4 btn-primary text-white py-3 rounded-xl font-semibold text-sm"> Daftar Sekarang </button>
-       </div>
-      </div><!-- Card 6 -->
-      <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100">
-       <div class="h-3 bg-gradient-to-r from-emerald-600 to-emerald-400"></div>
-       <div class="p-6">
-        <div class="flex items-center gap-3 mb-4">
-         <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
-          <svg width="24" height="24" viewbox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" fill="#10b981" /> <text x="12" y="16" text-anchor="middle" fill="white" font-size="7" font-weight="bold">
-            PLN
-           </text>
-          </svg>
-         </div>
-         <div><span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">Magang</span>
-         </div>
-        </div>
-        <h3 class="text-lg font-bold text-slate-800 mb-2">PLN Internship Program</h3>
-        <p class="text-slate-600 text-sm mb-4">Program magang BUMN di bidang energi dan kelistrikan</p>
-        <div class="flex items-center justify-between">
-         <div class="flex items-center gap-2 text-sm text-slate-500">
-          <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" /> <path d="M16 2v4M8 2v4M3 10h18" />
-          </svg><span>Deadline: 25 April 2025</span>
-         </div>
-        </div><button class="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-semibold text-sm transition-colors"> Daftar Sekarang </button>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section><!-- Newsletter Section -->
-   <section class="py-20 gradient-bg relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10">
-     <svg width="100%" height="100%"><defs>
-       <pattern id="dots" width="30" height="30" patternunits="userSpaceOnUse">
-        <circle cx="15" cy="15" r="2" fill="white" />
-       </pattern>
-      </defs> <rect width="100%" height="100%" fill="url(#dots)" />
-     </svg>
-    </div>
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-     <div class="mb-6"><span class="text-6xl">📬</span>
-     </div>
-     <h2 id="newsletter-title" class="text-3xl md:text-4xl font-bold text-white mb-4">Dapatkan Inpo Terbaru</h2>
-     <p class="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">Jangan lewatkan peluang emas! Langganan newsletter kami dan dapatkan info beasiswa, magang, dan pelatihan langsung ke inbox kamu setiap minggu.</p>
-     <form id="newsletter-form" class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto"><input type="email" id="email-input" placeholder="Masukkan email kamu..." class="flex-1 px-6 py-4 rounded-full text-slate-800 outline-none focus:ring-4 focus:ring-blue-300 transition-all" required> <button type="submit" id="subscribe-btn" class="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-all hover:scale-105 shadow-lg whitespace-nowrap"> Langganan Gratis </button>
-     </form>
-     <p id="form-message" class="text-blue-100 text-sm mt-4 hidden"></p>
-     <p class="text-blue-200 text-sm mt-4">🔒 Kami tidak akan spam email kamu. Bisa unsubscribe kapan saja.</p>
-    </div>
-   </section><!-- Testimoni Section -->
-   <section id="testimoni" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="text-center mb-16"><span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Social Proof</span>
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mt-2">Cerita Sukses Mereka</h2>
-      <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Ribuan mahasiswa dan fresh graduate telah meraih impian mereka melalui informasi dari EduCorner</p>
-     </div>
-     <div class="grid md:grid-cols-3 gap-8"><!-- Testimoni 1 -->
-      <div class="card-hover bg-gradient-to-br from-slate-50 to-blue-50 p-8 rounded-2xl border border-slate-100">
-       <div class="flex items-center gap-1 mb-4"><span class="text-amber-400 text-xl">★★★★★</span>
-       </div>
-       <p class="text-slate-600 italic mb-6">"Berkat info dari EduCorner, saya berhasil mendapatkan beasiswa LPDP dan sekarang sedang menempuh S2 di Belanda. Terima kasih EduCorner!"</p>
-       <div class="flex items-center gap-4">
-        <div class="w-14 h-14 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-         RA
-        </div>
-        <div>
-         <h4 class="font-bold text-slate-800">Rizky Aditya</h4>
-         <p class="text-sm text-slate-500">Awardee LPDP 2024</p>
-        </div>
-       </div>
-      </div><!-- Testimoni 2 -->
-      <div class="card-hover bg-gradient-to-br from-slate-50 to-emerald-50 p-8 rounded-2xl border border-slate-100">
-       <div class="flex items-center gap-1 mb-4"><span class="text-amber-400 text-xl">★★★★★</span>
-       </div>
-       <p class="text-slate-600 italic mb-6">"Pengalaman magang di Gojek yang saya dapat dari info EduCorner membuka banyak pintu karir. Sekarang saya sudah bekerja full-time di sana!"</p>
-       <div class="flex items-center gap-4">
-        <div class="w-14 h-14 bg-emerald-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-         SP
-        </div>
-        <div>
-         <h4 class="font-bold text-slate-800">Sarah Putri</h4>
-         <p class="text-sm text-slate-500">Ex-Intern Gojek, Now Full-time</p>
-        </div>
-       </div>
-      </div><!-- Testimoni 3 -->
-      <div class="card-hover bg-gradient-to-br from-slate-50 to-purple-50 p-8 rounded-2xl border border-slate-100">
-       <div class="flex items-center gap-1 mb-4"><span class="text-amber-400 text-xl">★★★★★</span>
-       </div>
-       <p class="text-slate-600 italic mb-6">"Bootcamp coding gratis yang saya temukan di EduCorner membantu saya switch career dari non-IT ke Software Engineer dalam 6 bulan!"</p>
-       <div class="flex items-center gap-4">
-        <div class="w-14 h-14 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-         BW
-        </div>
-        <div>
-         <h4 class="font-bold text-slate-800">Budi Wijaya</h4>
-         <p class="text-sm text-slate-500">Software Engineer, Tokopedia</p>
-        </div>
-       </div>
-      </div>
-     </div><!-- Stats -->
-     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-16 border-t border-slate-200">
-      <div class="text-center">
-       <div class="text-4xl md:text-5xl font-bold text-gradient">
-        50K+
-       </div>
-       <p class="text-slate-600 mt-2">Pengguna Aktif</p>
-      </div>
-      <div class="text-center">
-       <div class="text-4xl md:text-5xl font-bold text-gradient">
-        1.2K+
-       </div>
-       <p class="text-slate-600 mt-2">Info Tersedia</p>
-      </div>
-      <div class="text-center">
-       <div class="text-4xl md:text-5xl font-bold text-gradient">
-        500+
-       </div>
-       <p class="text-slate-600 mt-2">Sukses Stories</p>
-      </div>
-      <div class="text-center">
-       <div class="text-4xl md:text-5xl font-bold text-gradient">
-        100+
-       </div>
-       <p class="text-slate-600 mt-2">Partner Institusi</p>
-      </div>
-     </div>
-    </div>
-   </section><!-- Footer -->
-   <footer id="kontak" class="bg-slate-900 text-white py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="grid md:grid-cols-4 gap-12"><!-- Brand -->
-      <div class="col-span-2 md:col-span-1">
-       <div class="flex items-center gap-3 mb-6">
-        <svg width="40" height="40" viewbox="0 0 48 48" fill="none"><path d="M24 8L26 12L30 10L29 14L33 14L30 17L33 20L29 20L30 24L26 22L24 26L22 22L18 24L19 20L15 20L18 17L15 14L19 14L18 10L22 12L24 8Z" fill="#3b82f6" /> <path d="M14 28L24 24L34 28L24 32L14 28Z" fill="#60a5fa" /> <rect x="16" y="28" width="16" height="8" rx="1" fill="#3b82f6" /> <path d="M38 8L39 11L42 11L40 13L41 16L38 14L35 16L36 13L34 11L37 11L38 8Z" fill="#fbbf24" />
-        </svg><span class="text-2xl font-bold">EduCorner</span>
-       </div>
-       <p class="text-slate-400 text-sm mb-6">Ulurkan Tangan, Wujudkan Masa Depan. Platform terpercaya untuk informasi beasiswa, magang, dan pelatihan di Indonesia.</p>
-       <div class="flex gap-4"><!-- Instagram --> <a href="#" class="w-10 h-10 bg-slate-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-colors">
-         <svg width="20" height="20" viewbox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-         </svg></a> <!-- LinkedIn --> <a href="#" class="w-10 h-10 bg-slate-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-colors">
-         <svg width="20" height="20" viewbox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-         </svg></a> <!-- Twitter/X --> <a href="#" class="w-10 h-10 bg-slate-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-colors">
-         <svg width="20" height="20" viewbox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-         </svg></a> <!-- YouTube --> <a href="#" class="w-10 h-10 bg-slate-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-colors">
-         <svg width="20" height="20" viewbox="0 0 24 24" fill="currentColor"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-         </svg></a>
-       </div>
-      </div><!-- Quick Links -->
-      <div>
-       <h4 class="font-bold text-lg mb-6">Tautan Cepat</h4>
-       <ul class="space-y-3">
-        <li><a href="#beranda" class="text-slate-400 hover:text-white transition-colors">Beranda</a></li>
-        <li><a href="#kategori" class="text-slate-400 hover:text-white transition-colors">Kategori</a></li>
-        <li><a href="#peluang" class="text-slate-400 hover:text-white transition-colors">Peluang Terbaru</a></li>
-        <li><a href="#testimoni" class="text-slate-400 hover:text-white transition-colors">Testimoni</a></li>
-       </ul>
-      </div><!-- Resources -->
-      <div>
-       <h4 class="font-bold text-lg mb-6">Sumber Daya</h4>
-       <ul class="space-y-3">
-        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Blog &amp; Artikel</a></li>
-        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Tips &amp; Trik</a></li>
-        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">FAQ</a></li>
-        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Panduan Lengkap</a></li>
-       </ul>
-      </div><!-- Legal -->
-      <div>
-       <h4 class="font-bold text-lg mb-6">Hubungi Kami</h4>
-       <ul class="space-y-3">
-        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Tentang Kami</a></li>
-        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Kontak</a></li>
-        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Kebijakan Privasi</a></li>
-        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Syarat &amp; Ketentuan</a></li>
-       </ul>
-      </div>
-     </div>
-     <div class="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-      <p class="text-slate-400 text-sm">© 2025 EduCorner. All rights reserved.</p>
-      <p class="text-slate-400 text-sm mt-4 md:mt-0">Made with 💙 for Indonesian Students</p>
-     </div>
-    </div>
-   </footer>
   </div>
+
+  <section id="peluang" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold">Peluang Terpopuler</h2>
+        <p class="text-slate-600 mt-2">Update setiap hari untuk masa depanmu</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="card-hover border rounded-2xl p-6 bg-white shadow-sm">
+          <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-bold">Beasiswa</span>
+          <h3 class="text-xl font-bold mt-4">LPDP Scholarship 2025</h3>
+          <p class="text-slate-600 text-sm mt-2 mb-4">Beasiswa penuh S2 & S3 dalam dan luar negeri dari Kemenkeu RI.</p>
+          <button class="w-full btn-primary text-white py-3 rounded-xl font-bold">Daftar Sekarang</button>
+        </div>
+        <div class="card-hover border rounded-2xl p-6 bg-white shadow-sm">
+          <span class="bg-emerald-100 text-emerald-600 px-3 py-1 rounded-full text-xs font-bold">Magang</span>
+          <h3 class="text-xl font-bold mt-4">GoTo Impact Internship</h3>
+          <p class="text-slate-600 text-sm mt-2 mb-4">Program magang 6 bulan di divisi teknologi GoTo Group.</p>
+          <button class="w-full bg-emerald-600 text-white py-3 rounded-xl font-bold">Daftar Sekarang</button>
+        </div>
+        <div class="card-hover border rounded-2xl p-6 bg-white shadow-sm">
+          <span class="bg-amber-100 text-amber-600 px-3 py-1 rounded-full text-xs font-bold">Pelatihan</span>
+          <h3 class="text-xl font-bold mt-4">DBS Foundation Bootcamp</h3>
+          <p class="text-slate-600 text-sm mt-2 mb-4">Bootcamp coding gratis 3 bulan dengan sertifikasi internasional.</p>
+          <button class="w-full bg-amber-500 text-white py-3 rounded-xl font-bold">Daftar Sekarang</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="kontak" class="bg-slate-900 text-white py-12 text-center">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-2xl font-bold mb-4 text-blue-400">EduCorner</h2>
+      <p class="text-slate-400 mb-8 max-w-md mx-auto">Platform terpercaya untuk informasi beasiswa, magang, dan pelatihan di Indonesia.</p>
+      <div class="border-t border-slate-800 pt-8 text-sm text-slate-500">
+        © 2025 EduCorner. Made with 💙 for Indonesian Students.
+      </div>
+    </div>
+  </footer>
+
   <script>
-    // Default configuration
-    const defaultConfig = {
-      hero_title: 'Ulurkan Tangan, Wujudkan Masa Depan',
-      hero_subtitle: 'Wadah informasi beasiswa, magang, dan pelatihan terkurasi untuk meningkatkan skill mahasiswa dan lulusan baru.',
-      newsletter_title: 'Dapatkan Inpo Terbaru',
-      primary_color: '#2563eb',
-      secondary_color: '#1e3a8a',
-      accent_color: '#fbbf24',
-      text_color: '#1e293b',
-      background_color: '#f8fafc'
-    };
+    // Logika Modal
+    const modal = document.getElementById('about-modal');
+    const btnOpen = document.getElementById('open-modal');
+    const btnCloseX = document.getElementById('close-modal-x');
+    const btnCloseBtn = document.getElementById('close-modal-btn');
 
-    let config = { ...defaultConfig };
-    let subscribers = [];
-
-    // Data SDK Handler
-    const dataHandler = {
-      onDataChanged(data) {
-        subscribers = data;
-      }
-    };
-
-    // Element SDK initialization
-    async function initApp() {
-      // Initialize Element SDK
-      if (window.elementSdk) {
-        await window.elementSdk.init({
-          defaultConfig,
-          onConfigChange: async (newConfig) => {
-            config = { ...defaultConfig, ...newConfig };
-            applyConfig();
-          },
-          mapToCapabilities: (cfg) => ({
-            recolorables: [
-              {
-                get: () => cfg.background_color || defaultConfig.background_color,
-                set: (value) => window.elementSdk.setConfig({ background_color: value })
-              },
-              {
-                get: () => cfg.secondary_color || defaultConfig.secondary_color,
-                set: (value) => window.elementSdk.setConfig({ secondary_color: value })
-              },
-              {
-                get: () => cfg.text_color || defaultConfig.text_color,
-                set: (value) => window.elementSdk.setConfig({ text_color: value })
-              },
-              {
-                get: () => cfg.primary_color || defaultConfig.primary_color,
-                set: (value) => window.elementSdk.setConfig({ primary_color: value })
-              },
-              {
-                get: () => cfg.accent_color || defaultConfig.accent_color,
-                set: (value) => window.elementSdk.setConfig({ accent_color: value })
-              }
-            ],
-            borderables: [],
-            fontEditable: undefined,
-            fontSizeable: undefined
-          }),
-          mapToEditPanelValues: (cfg) => new Map([
-            ['hero_title', cfg.hero_title || defaultConfig.hero_title],
-            ['hero_subtitle', cfg.hero_subtitle || defaultConfig.hero_subtitle],
-            ['newsletter_title', cfg.newsletter_title || defaultConfig.newsletter_title]
-          ])
-        });
-        config = { ...defaultConfig, ...window.elementSdk.config };
-      }
-
-      // Initialize Data SDK
-      if (window.dataSdk) {
-        const result = await window.dataSdk.init(dataHandler);
-        if (!result.isOk) {
-          console.error('Failed to initialize Data SDK');
-        }
-      }
-
-      applyConfig();
-      setupEventListeners();
+    function toggleModal() {
+      modal.classList.toggle('hidden');
+      document.body.classList.toggle('overflow-hidden');
     }
 
-    function applyConfig() {
-      // Apply hero title
-      const heroTitle = document.getElementById('hero-title');
-      if (heroTitle) {
-        heroTitle.innerHTML = (config.hero_title || defaultConfig.hero_title).replace(',', ',<br/>');
-      }
-
-      // Apply hero subtitle
-      const heroSubtitle = document.getElementById('hero-subtitle');
-      if (heroSubtitle) {
-        heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
-      }
-
-      // Apply newsletter title
-      const newsletterTitle = document.getElementById('newsletter-title');
-      if (newsletterTitle) {
-        newsletterTitle.textContent = config.newsletter_title || defaultConfig.newsletter_title;
-      }
-
-      // Apply colors
-      document.documentElement.style.setProperty('--primary-color', config.primary_color || defaultConfig.primary_color);
-      document.documentElement.style.setProperty('--secondary-color', config.secondary_color || defaultConfig.secondary_color);
-      document.documentElement.style.setProperty('--accent-color', config.accent_color || defaultConfig.accent_color);
-      document.documentElement.style.setProperty('--text-color', config.text_color || defaultConfig.text_color);
-      document.documentElement.style.setProperty('--background-color', config.background_color || defaultConfig.background_color);
+    btnOpen.onclick = toggleModal;
+    btnCloseX.onclick = toggleModal;
+    btnCloseBtn.onclick = toggleModal;
+    
+    // Tutup jika klik area luar modal
+    window.onclick = function(event) {
+      if (event.target == modal) { toggleModal(); }
     }
-
-    function setupEventListeners() {
-      // Newsletter form submission
-      const form = document.getElementById('newsletter-form');
-      const emailInput = document.getElementById('email-input');
-      const subscribeBtn = document.getElementById('subscribe-btn');
-      const formMessage = document.getElementById('form-message');
-
-      if (form) {
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          
-          const email = emailInput.value.trim();
-          if (!email) return;
-
-          // Check limit
-          if (subscribers.length >= 999) {
-            formMessage.textContent = '⚠️ Maaf, daftar langganan sudah penuh.';
-            formMessage.className = 'text-amber-300 text-sm mt-4';
-            formMessage.classList.remove('hidden');
-            return;
-          }
-
-          // Show loading state
-          subscribeBtn.disabled = true;
-          subscribeBtn.innerHTML = '<span class="animate-pulse">Mendaftar...</span>';
-
-          if (window.dataSdk) {
-            const result = await window.dataSdk.create({
-              email: email,
-              subscribedAt: new Date().toISOString()
-            });
-
-            if (result.isOk) {
-              formMessage.textContent = '✅ Berhasil! Selamat datang di komunitas EduCorner!';
-              formMessage.className = 'text-emerald-300 text-sm mt-4';
-              formMessage.classList.remove('hidden');
-              emailInput.value = '';
-            } else {
-              formMessage.textContent = '❌ Gagal mendaftar. Silakan coba lagi.';
-              formMessage.className = 'text-red-300 text-sm mt-4';
-              formMessage.classList.remove('hidden');
-            }
-          } else {
-            // Fallback if SDK not available
-            formMessage.textContent = '✅ Terima kasih! Email kamu telah terdaftar.';
-            formMessage.className = 'text-emerald-300 text-sm mt-4';
-            formMessage.classList.remove('hidden');
-            emailInput.value = '';
-          }
-
-          // Reset button
-          subscribeBtn.disabled = false;
-          subscribeBtn.innerHTML = 'Langganan Gratis';
-
-          // Hide message after 5 seconds
-          setTimeout(() => {
-            formMessage.classList.add('hidden');
-          }, 5000);
-        });
-      }
-
-      // Smooth scroll for navigation
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        });
-      });
-    }
-
-    // Initialize app
-    initApp();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c46551341ee6592',t:'MTc2OTQ5Njc5OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ </body>
 </html>
