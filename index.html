@@ -125,6 +125,79 @@ code 2
         Wujudkan Masa Depan</h1>
        <p id="hero-subtitle" class="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">Wadah informasi beasiswa, magang, dan pelatihan terkurasi untuk meningkatkan skill mahasiswa dan lulusan baru.</p>
        <div class="flex flex-wrap gap-4"><button class="bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition-all hover:scale-105 shadow-lg"> Jelajahi Peluang </button> <button class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-blue-600 transition-all"> Pelajari Lebih Lanjut </button>
+       <div class="flex flex-wrap gap-4">
+    <button class="bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition-all hover:scale-105 shadow-lg"> 
+        Jelajahi Peluang 
+    </button> 
+    <button id="open-modal" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-blue-600 transition-all"> 
+        Pelajari Lebih Lanjut 
+    </button>
+</div>
+
+<div id="about-modal" class="fixed inset-0 z-[60] hidden overflow-y-auto">
+    <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm transition-opacity"></div>
+    
+    <div class="relative min-h-screen flex items-center justify-center p-4">
+        <div class="relative bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden animate-fadeInUp">
+            <div class="gradient-bg p-6 text-white flex justify-between items-center">
+                <h3 class="text-2xl font-bold">Tentang EduCorner</h3>
+                <button id="close-modal" class="text-white hover:rotate-90 transition-transform text-3xl font-light">&times;</button>
+            </div>
+            
+            <div class="p-8 max-h-[70vh] overflow-y-auto text-slate-700 leading-relaxed">
+                <h4 class="text-xl font-bold text-blue-600 mb-4">Ruang Tumbuh untuk Masa Depan</h4>
+                <p class="mb-6">Selamat datang di <strong>EduCorner</strong>, sebuah ekosistem pembelajaran digital yang dirancang khusus untuk menjembatani kesenjangan antara ambisi dan pencapaian. Kami percaya bahwa akses terhadap materi edukasi yang berkualitas adalah hak setiap individu, bukan sebuah hak istimewa.</p>
+                
+                <div class="bg-blue-50 p-4 rounded-xl mb-6 border-l-4 border-blue-600">
+                    <h5 class="font-bold text-blue-800 mb-2">Visi Kami</h5>
+                    <p>Menjadi pusat inovasi pembelajaran yang adaptif, di mana setiap pengguna dapat mengeksplorasi potensi diri tanpa batas ruang dan waktu.</p>
+                </div>
+
+                <h5 class="font-bold text-slate-800 mb-3">Apa yang Membuat EduCorner Berbeda?</h5>
+                <ul class="space-y-3 mb-6">
+                    <li><strong>• Kurikulum Relevan:</strong> Materi disusun untuk menjawab tantangan dunia nyata.</li>
+                    <li><strong>• Interaktivitas Tinggi:</strong> Mengutamakan keterlibatan melalui kuis dan forum diskusi.</li>
+                    <li><strong>• Aksesibilitas Tanpa Batas:</strong> Desain ringan dan responsif di semua perangkat.</li>
+                </ul>
+
+                <h5 class="font-bold text-slate-800 mb-3">Pilar Utama EduCorner</h5>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div class="p-3 bg-slate-100 rounded-lg"><strong>Learn:</strong> Materi dari para ahli.</div>
+                    <div class="p-3 bg-slate-100 rounded-lg"><strong>Connect:</strong> Jaringan mentor & profesional.</div>
+                    <div class="p-3 bg-slate-100 rounded-lg"><strong>Grow:</strong> Pelacakan progres personal.</div>
+                </div>
+
+                <p class="italic text-center text-blue-600 font-medium">"Pendidikan bukan hanya tentang mengisi wadah, tetapi tentang menyalakan api rasa ingin tahu."</p>
+            </div>
+
+            <div class="p-6 border-t border-slate-100 bg-slate-50 text-center">
+                <button id="close-modal-btn" class="btn-primary text-white px-8 py-3 rounded-full font-bold">Siap Memulai Perjalanan</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Tambahkan script ini di dalam fungsi setupEventListeners() yang sudah ada
+    const modal = document.getElementById('about-modal');
+    const btnOpen = document.getElementById('open-modal');
+    const btnClose = document.getElementById('close-modal');
+    const btnCloseBottom = document.getElementById('close-modal-btn');
+
+    function toggleModal() {
+        modal.classList.toggle('hidden');
+        document.body.classList.toggle('overflow-hidden'); // Mencegah scrolling saat modal buka
+    }
+
+    if(btnOpen) btnOpen.addEventListener('click', toggleModal);
+    if(btnClose) btnClose.addEventListener('click', toggleModal);
+    if(btnCloseBottom) btnCloseBottom.addEventListener('click', toggleModal);
+
+    // Tutup modal jika klik di luar area konten
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) toggleModal();
+    });
+</script>
        </div>
       </div>
       <div class="hidden lg:block animate-fadeInUp delay-200"><!-- Ilustrasi Hero -->
@@ -430,6 +503,7 @@ code 2
      </div>
     </div>
    </footer>
+   
   </div>
   <script>
     // Default configuration
@@ -617,3 +691,4 @@ code 2
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c469a4a57219c2c',t:'MTc2OTQ5OTYzNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
