@@ -1,4 +1,3 @@
-code 2
 <!doctype html>
 <html lang="id" class="h-full">
  <head>
@@ -124,64 +123,7 @@ code 2
        <h1 id="hero-title" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Ulurkan Tangan,<br>
         Wujudkan Masa Depan</h1>
        <p id="hero-subtitle" class="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed">Wadah informasi beasiswa, magang, dan pelatihan terkurasi untuk meningkatkan skill mahasiswa dan lulusan baru.</p>
-<div class="flex flex-wrap gap-4">
-        <button class="bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition-all hover:scale-105 shadow-lg"> Jelajahi Peluang </button> 
-        <a href="#tentang-kami" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-blue-600 transition-all text-center flex items-center justify-center"> Pelajari Lebih Lanjut </a>
-       </div>
-            <div class="p-8 max-h-[70vh] overflow-y-auto text-slate-700 leading-relaxed">
-                <h4 class="text-xl font-bold text-blue-600 mb-4">Ruang Tumbuh untuk Masa Depan</h4>
-                <p class="mb-6">Selamat datang di <strong>EduCorner</strong>, sebuah ekosistem pembelajaran digital yang dirancang khusus untuk menjembatani kesenjangan antara ambisi dan pencapaian. Kami percaya bahwa akses terhadap materi edukasi yang berkualitas adalah hak setiap individu, bukan sebuah hak istimewa.</p>
-                
-                <div class="bg-blue-50 p-4 rounded-xl mb-6 border-l-4 border-blue-600">
-                    <h5 class="font-bold text-blue-800 mb-2">Visi Kami</h5>
-                    <p>Menjadi pusat inovasi pembelajaran yang adaptif, di mana setiap pengguna dapat mengeksplorasi potensi diri tanpa batas ruang dan waktu.</p>
-                </div>
-
-                <h5 class="font-bold text-slate-800 mb-3">Apa yang Membuat EduCorner Berbeda?</h5>
-                <ul class="space-y-3 mb-6">
-                    <li><strong>• Kurikulum Relevan:</strong> Materi disusun untuk menjawab tantangan dunia nyata.</li>
-                    <li><strong>• Interaktivitas Tinggi:</strong> Mengutamakan keterlibatan melalui kuis dan forum diskusi.</li>
-                    <li><strong>• Aksesibilitas Tanpa Batas:</strong> Desain ringan dan responsif di semua perangkat.</li>
-                </ul>
-
-                <h5 class="font-bold text-slate-800 mb-3">Pilar Utama EduCorner</h5>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                    <div class="p-3 bg-slate-100 rounded-lg"><strong>Learn:</strong> Materi dari para ahli.</div>
-                    <div class="p-3 bg-slate-100 rounded-lg"><strong>Connect:</strong> Jaringan mentor & profesional.</div>
-                    <div class="p-3 bg-slate-100 rounded-lg"><strong>Grow:</strong> Pelacakan progres personal.</div>
-                </div>
-
-                <p class="italic text-center text-blue-600 font-medium">"Pendidikan bukan hanya tentang mengisi wadah, tetapi tentang menyalakan api rasa ingin tahu."</p>
-            </div>
-
-            <div class="p-6 border-t border-slate-100 bg-slate-50 text-center">
-                <button id="close-modal-btn" class="btn-primary text-white px-8 py-3 rounded-full font-bold">Siap Memulai Perjalanan</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    // Tambahkan script ini di dalam fungsi setupEventListeners() yang sudah ada
-    const modal = document.getElementById('about-modal');
-    const btnOpen = document.getElementById('open-modal');
-    const btnClose = document.getElementById('close-modal');
-    const btnCloseBottom = document.getElementById('close-modal-btn');
-
-    function toggleModal() {
-        modal.classList.toggle('hidden');
-        document.body.classList.toggle('overflow-hidden'); // Mencegah scrolling saat modal buka
-    }
-
-    if(btnOpen) btnOpen.addEventListener('click', toggleModal);
-    if(btnClose) btnClose.addEventListener('click', toggleModal);
-    if(btnCloseBottom) btnCloseBottom.addEventListener('click', toggleModal);
-
-    // Tutup modal jika klik di luar area konten
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) toggleModal();
-    });
-</script>
+       <div class="flex flex-wrap gap-4"><button class="bg-white text-blue-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition-all hover:scale-105 shadow-lg"> Jelajahi Peluang </button> <button class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-blue-600 transition-all"> Pelajari Lebih Lanjut </button>
        </div>
       </div>
       <div class="hidden lg:block animate-fadeInUp delay-200"><!-- Ilustrasi Hero -->
@@ -194,144 +136,7 @@ code 2
      <svg viewbox="0 0 1440 120" fill="none" preserveaspectratio="none" class="w-full h-20"><path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#f8fafc" />
      </svg>
     </div>
-</section>
-
-   <section id="tentang-kami" class="py-24 bg-white relative z-10">
-    <div class="max-w-4xl mx-auto px-6">
-     <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Tentang EduCorner: Ruang Tumbuh untuk Masa Depan</h2>
-      <div class="w-24 h-1.5 bg-blue-600 mx-auto rounded-full"></div>
-     </div>
-     
-     <div class="text-slate-600 leading-relaxed space-y-8">
-      <p class="text-lg text-center">Selamat datang di <strong>EduCorner</strong>, sebuah ekosistem pembelajaran digital yang dirancang khusus untuk menjembatani kesenjangan antara ambisi dan pencapaian. Kami percaya bahwa akses terhadap materi edukasi yang berkualitas adalah hak setiap individu, bukan sebuah hak istimewa.</p>
-      
-      <div class="bg-blue-50 p-8 rounded-3xl border-l-8 border-blue-600 shadow-sm">
-       <h3 class="text-xl font-bold text-blue-900 mb-3">Visi Kami</h3>
-       <p class="text-blue-800">Menjadi pusat inovasi pembelajaran yang adaptif, di mana setiap pengguna dapat mengeksplorasi potensi diri tanpa batas ruang dan waktu.</p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6 py-8">
-       <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
-        <h4 class="font-bold text-blue-600 mb-2">Kurikulum Relevan</h4>
-        <p class="text-sm italic">Materi disusun untuk menjawab tantangan dunia nyata.</p>
-       </div>
-       <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
-        <h4 class="font-bold text-blue-600 mb-2">Interaktivitas Tinggi</h4>
-        <p class="text-sm italic">Melalui kuis, forum diskusi, dan proyek komunitas.</p>
-       </div>
-       <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
-        <h4 class="font-bold text-blue-600 mb-2">Aksesibilitas</h4>
-        <p class="text-sm italic">Ringan dan responsif di semua perangkat.</p>
-       </div>
-      </div>
-
-      <div class="space-y-6">
-       <h3 class="text-2xl font-bold text-slate-800 text-center">Pilar Utama EduCorner</h3>
-       <div class="grid gap-4">
-        <div class="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
-         <span class="bg-blue-600 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold">1</span>
-         <p><strong>Learn (Belajar):</strong> Materi dari para ahli yang mudah dipahami.</p>
-        </div>
-        <div class="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
-         <span class="bg-blue-600 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold">2</span>
-         <p><strong>Connect (Terhubung):</strong> Jaringan pelajar, mentor, dan profesional.</p>
-        </div>
-        <div class="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm border border-slate-100">
-         <span class="bg-blue-600 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold">3</span>
-         <p><strong>Grow (Berkembang):</strong> Fitur manajemen progres belajar personal.</p>
-        </div>
-       </div>
-      </div>
-
-      <div class="bg-slate-900 text-white p-12 rounded-[2rem] text-center mt-12 shadow-xl">
-       <p class="text-xl italic mb-8">"Pendidikan bukan hanya tentang mengisi wadah, tetapi tentang menyalakan api rasa ingin tahu."</p>
-       <p class="text-slate-400 mb-8">Kami mengundang Anda untuk menjelajahi setiap sudut EduCorner. Mari jadikan setiap klik sebagai langkah menuju pengetahuan yang lebih luas.</p>
-       <a href="#peluang" class="inline-block bg-blue-600 hover:bg-blue-500 text-white px-10 py-4 rounded-full font-bold transition-all transform hover:scale-105">Siap Memulai Perjalanan Anda?</a>
-      </div>
-     </div>
-    </div>
-   </section>            <h3 class="text-2xl font-bold text-slate-800 mb-6 text-center">Pilar Utama EduCorner</h3>
-            <div class="space-y-4 mb-12">
-                <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-slate-50 transition-colors">
-                    <div class="bg-blue-600 text-white p-2 rounded-lg font-bold">01</div>
-                    <div><strong>Learn (Belajar):</strong> Menyediakan materi dari para ahli di bidangnya dengan penyampaian yang mudah dipahami.</div>
-                </div>
-                <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-slate-50 transition-colors">
-                    <div class="bg-blue-600 text-white p-2 rounded-lg font-bold">02</div>
-                    <div><strong>Connect (Terhubung):</strong> Membangun jaringan antara pelajar, mentor, dan profesional untuk berbagi wawasan.</div>
-                </div>
-                <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-slate-50 transition-colors">
-                    <div class="bg-blue-600 text-white p-2 rounded-lg font-bold">03</div>
-                    <div><strong>Grow (Berkembang):</strong> Membantu Anda melacak kemajuan secara personal melalui fitur manajemen progres belajar.</div>
-                </div>
-            </div>
-
-            <div class="text-center bg-slate-900 text-white p-10 rounded-3xl relative overflow-hidden">
-                <p class="text-xl italic mb-6">"Pendidikan bukan hanya tentang mengisi wadah, tetapi tentang menyalakan api rasa ingin tahu."</p>
-                <p class="mb-8 text-slate-300">Kami mengundang Anda untuk menjelajahi setiap sudut EduCorner. Mari jadikan setiap klik sebagai langkah menuju pengetahuan yang lebih luas.</p>
-                <h4 class="text-2xl font-bold mb-4">Siap Memulai Perjalanan Anda?</h4>
-                <a href="#peluang" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold transition-all">Bergabung Sekarang</a>
-            </div>
-        </div>
-    </div>
-</section>
-  <section id="tentang-kami" class="py-20 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Tentang EduCorner: Ruang Tumbuh untuk Masa Depan</h2>
-            <div class="w-20 h-1.5 bg-blue-600 mx-auto mt-4 rounded-full"></div>
-        </div>
-        
-        <div class="prose prose-blue max-w-none text-slate-600 leading-relaxed">
-            <p class="text-lg mb-8 text-center">Selamat datang di <strong>EduCorner</strong>, sebuah ekosistem pembelajaran digital yang dirancang khusus untuk menjembatani kesenjangan antara ambisi dan pencapaian. Kami percaya bahwa akses terhadap materi edukasi yang berkualitas adalah hak setiap individu, bukan sebuah hak istimewa.</p>
-            
-            <div class="bg-blue-50 p-8 rounded-2xl border-l-8 border-blue-600 mb-10 shadow-sm">
-                <h3 class="text-xl font-bold text-blue-900 mb-3">Visi Kami</h3>
-                <p class="text-blue-800">Menjadi pusat inovasi pembelajaran yang adaptif, di mana setiap pengguna dapat mengeksplorasi potensi diri tanpa batas ruang dan waktu.</p>
-            </div>
-
-            <h3 class="text-2xl font-bold text-slate-800 mb-6">Apa yang Membuat EduCorner Berbeda?</h3>
-            <div class="grid md:grid-cols-3 gap-6 mb-12">
-                <div class="p-6 border border-slate-100 rounded-xl bg-slate-50">
-                    <h4 class="font-bold text-blue-600 mb-2">Kurikulum Relevan</h4>
-                    <p class="text-sm">Materi disusun untuk menjawab tantangan dunia nyata, dari soft skills hingga teknologi terbaru.</p>
-                </div>
-                <div class="p-6 border border-slate-100 rounded-xl bg-slate-50">
-                    <h4 class="font-bold text-blue-600 mb-2">Interaktivitas Tinggi</h4>
-                    <p class="text-sm">Keterlibatan pengguna melalui kuis interaktif, forum diskusi, dan proyek komunitas.</p>
-                </div>
-                <div class="p-6 border border-slate-100 rounded-xl bg-slate-50">
-                    <h4 class="font-bold text-blue-600 mb-2">Aksesibilitas</h4>
-                    <p class="text-sm">Platform ringan dan responsif, lancar di desktop maupun perangkat seluler.</p>
-                </div>
-            </div>
-
-            <h3 class="text-2xl font-bold text-slate-800 mb-6 text-center">Pilar Utama EduCorner</h3>
-            <div class="space-y-4 mb-12">
-                <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-slate-50 transition-colors">
-                    <div class="bg-blue-600 text-white p-2 rounded-lg font-bold">01</div>
-                    <div><strong>Learn (Belajar):</strong> Menyediakan materi dari para ahli di bidangnya dengan penyampaian yang mudah dipahami.</div>
-                </div>
-                <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-slate-50 transition-colors">
-                    <div class="bg-blue-600 text-white p-2 rounded-lg font-bold">02</div>
-                    <div><strong>Connect (Terhubung):</strong> Membangun jaringan antara pelajar, mentor, dan profesional untuk berbagi wawasan.</div>
-                </div>
-                <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-slate-50 transition-colors">
-                    <div class="bg-blue-600 text-white p-2 rounded-lg font-bold">03</div>
-                    <div><strong>Grow (Berkembang):</strong> Membantu Anda melacak kemajuan secara personal melalui fitur manajemen progres belajar.</div>
-                </div>
-            </div>
-
-            <div class="text-center bg-slate-900 text-white p-10 rounded-3xl relative overflow-hidden">
-                <p class="text-xl italic mb-6">"Pendidikan bukan hanya tentang mengisi wadah, tetapi tentang menyalakan api rasa ingin tahu."</p>
-                <p class="mb-8 text-slate-300">Kami mengundang Anda untuk menjelajahi setiap sudut EduCorner. Mari jadikan setiap klik sebagai langkah menuju pengetahuan yang lebih luas.</p>
-                <h4 class="text-2xl font-bold mb-4">Siap Memulai Perjalanan Anda?</h4>
-                <a href="#peluang" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold transition-all">Bergabung Sekarang</a>
-            </div>
-        </div>
-    </div>
-</section>
+   </section><!-- Search & Filter Section -->
    <section class="py-12 bg-slate-50">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
      <div class="glass-effect rounded-2xl shadow-xl p-8 -mt-20 relative z-20 border border-slate-100">
@@ -624,7 +429,6 @@ code 2
      </div>
     </div>
    </footer>
-   
   </div>
   <script>
     // Default configuration
@@ -812,9 +616,3 @@ code 2
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c469a4a57219c2c',t:'MTc2OTQ5OTYzNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
-
-
-
-
-
